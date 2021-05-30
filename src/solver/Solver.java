@@ -17,11 +17,13 @@ public class Solver {
             for (Configuration child : config.getSuccessors()) {
                 ++this.numConfigs;
                 if (child.isValid()) {
+                    System.out.println("\tValid Successor:\n" + child);
                     Optional<Configuration> sol = solve(child);
                     if (sol.isPresent()) {
                         return sol;
                     }
                 }
+                System.out.println("\tInvalid Successor:\n" + child);
             }
         }
         return Optional.empty();
